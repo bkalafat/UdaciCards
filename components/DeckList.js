@@ -5,7 +5,7 @@ export default class DeckList extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Text  >DeckList dev</Text>
+        <Text>DeckList dev</Text>
       </View>
     )
   }
