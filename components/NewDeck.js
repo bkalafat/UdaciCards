@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput } from 'react-native'
 import TextButton from "./TextButton";
+import { bordeaux, white } from '../utils/colors';
 
 export default class NewDeck extends Component {
 
@@ -12,7 +13,11 @@ export default class NewDeck extends Component {
     return (
       <View style={styles.container} >
         <Text style={styles.text}>What is the title of your new Deck?</Text>
-        <TextButton style={{ padding: 10 }} onPress={this.createDeck}>
+        <TextInput
+          style={styles.textInput}
+          placeholder={"Deck Title"}
+        />
+        <TextButton style={styles.button} onPress={this.createDeck}>
           Create Deck
         </TextButton>
       </View>
@@ -38,9 +43,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 300,
     borderRadius: 8,
-    paddingLeft: 10
+    paddingLeft: 10,
+    width: 300,
+    height: 80
   },
   button: {
-    justifyContent: 'flex-end'
+    padding: 10,
+    margin: 50,
+    backgroundColor:
+    bordeaux,
+    color: white,
+    borderRadius: 8
   }
 });
