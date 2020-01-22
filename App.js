@@ -4,7 +4,8 @@ import DeckList from './components/DeckList'
 
 export default function App() {
   return (
-    <DeckList/>
+    <View style={styles}><DeckList /></View>
+
   );
 }
 
