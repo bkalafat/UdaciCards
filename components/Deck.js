@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
 
-
-
 export default function Deck({ deckName, cardCount }) {
   return (
     <View style={styles.container} >

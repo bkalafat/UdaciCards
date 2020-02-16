@@ -5,6 +5,7 @@ import NewDeck from './components/NewDeck'
 import Deck from './components/Deck'
 import NewQuestion from './components/NewQuestion'
 import Constants from 'expo-constants'
+import Quiz from './components/Quiz'
 import { purple } from './utils/colors';
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
@@ -19,7 +20,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} >
       <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
-      <NewQuestion />
+      <Quiz deckName="udaciCards" cardCount="3"/>
     </View>
   );
 }
