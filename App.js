@@ -7,6 +7,8 @@ import NewQuestion from './components/NewQuestion'
 import Constants from 'expo-constants'
 import Quiz from './components/Quiz'
 import { purple } from './utils/colors';
+import { createStackNavigator } from 'react-navigation-stack';
+import Tabs from './components/Tabs'
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -16,11 +18,29 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
   )
 }
 
+const MainNavigator = createAppContainer(createStackNavigator({
+  home: {
+    screen: Tabs,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  EntryDetail: {
+    screen: EntryDetail,
+    navigationOptions: () => ({
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    }),
+  },
+}));
+
 export default function App() {
   return (
     <View style={{ flex: 1 }} >
       <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
-      <Quiz deckName="udaciCards" cardCount="3"/>
+      <MainNavigator />
     </View>
   );
 }
