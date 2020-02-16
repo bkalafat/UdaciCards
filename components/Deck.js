@@ -3,17 +3,18 @@ import { StyleSheet, Text, View } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
 
-export default function DeckView({ deckName, cardCount }) {
 
+
+export default function Deck({ deckName, cardCount }) {
   return (
     <View style={styles.container} >
       <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{deckName}</Text>
       <Text style={[{ fontSize: 31 }, styles.text]}>{cardCount} cards</Text>
       <View >
-        <TextButton style={styles.whiteButton} >
+        <TextButton style={styles.whiteButton} onPress={() => { }} >
           Add Card
         </TextButton>
-        <TextButton style={styles.bordeuxButton} >
+        <TextButton style={styles.bordeuxButton} onPress={() => { }} >
           Start Quiz
         </TextButton>
       </View>

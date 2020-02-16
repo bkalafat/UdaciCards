@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
-import DeckView from './components/DeckView'
+import Deck from './components/Deck'
+import NewQuestion from './components/NewQuestion'
 import Constants from 'expo-constants'
 import { purple } from './utils/colors';
 
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} >
       <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
-      <DeckView deckName="udacicards" cardCount="3" />
+      <NewQuestion />
     </View>
   );
 }
