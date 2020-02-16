@@ -28,7 +28,8 @@ export default class NewDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    alignItems: 'center'
+    alignItems: 'center',
+    flex:1
   },
   text: {
     fontSize: 39,
