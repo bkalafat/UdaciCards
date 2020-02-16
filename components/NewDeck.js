@@ -12,7 +12,7 @@ export default class NewDeck extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Text style={styles.text}>What is the title of your new Deck?</Text>
+        <Text style={styles.text}>What is the title of new Deck?</Text>
         <TextInput
           style={styles.textInput}
           placeholder={"Deck Title"}
