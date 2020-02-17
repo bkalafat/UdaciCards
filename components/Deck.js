@@ -1,23 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
 
-export default function Deck({ deckName, cardCount }) {
-  return (
-    <View style={styles.container} >
-      <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{deckName}</Text>
-      <Text style={[{ fontSize: 31 }, styles.text]}>{cardCount} cards</Text>
-      <View >
-        <TextButton style={styles.whiteButton} onPress={() => { }} >
-          Add Card
+export default class Deck extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      deckName: this.props.route.params.deckInfo.deckName,
+      cardCount: this.props.route.params.deckInfo.cardCount
+    }
+  }
+
+  addCard = () => {
+    this.props.navigation.navigate('New Question')
+  };
+  startQuiz = () => {
+    this.props.navigation.navigate('Quiz', { deckInfo: { deckName: this.state.deckName, cardCount: this.state.cardCount }})
+  };
+
+  render() {
+    return (
+      <View style={styles.container} >
+        <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{this.state.deckName}</Text>
+        <Text style={[{ fontSize: 31 }, styles.text]}>{this.state.cardCount} cards</Text>
+        <View >
+          <TextButton style={styles.whiteButton} onPress={this.addCard} >
+            Add Card
         </TextButton>
-        <TextButton style={styles.bordeuxButton} onPress={() => { }} >
-          Start Quiz
+          <TextButton style={styles.bordeuxButton} onPress={this.startQuiz} >
+            Start Quiz
         </TextButton>
+        </View>
       </View>
-    </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({

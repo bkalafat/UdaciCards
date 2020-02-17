@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
 
+const question = "Does react native work with Android?";
+const answer = "No doesn't work.";
+let showButtonName = "Show Answer";
+
 //TODO this function will be class
-export default function Quiz({ deckName, cardCount }) {
+export default class Quiz extends Component {
 
-  const question = "Does react native work with Android?";
-  const answer = "No doesn't work.";
-  let showButtonName = "Show Answer";
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      deckName: this.props.route.params.deckInfo.deckName,
+      cardCount: this.props.route.params.deckInfo.cardCount
+    }
+  }
+
+render() {
   return (
     <View>
-      <Text style={{ alignSelf: "flex-start", fontSize:22, padding: 10 }} >3/{cardCount}</Text>
+      <Text style={{ alignSelf: "flex-start", fontSize: 22, padding: 10 }} >3/{this.state.cardCount}</Text>
       <View style={styles.container} >
         <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{question}</Text>
         <View >
@@ -27,9 +37,10 @@ export default function Quiz({ deckName, cardCount }) {
         </TextButton>
         </View>
       </View>
-    </View>
+    </View >
 
   )
+}
 }
 
 const styles = StyleSheet.create({

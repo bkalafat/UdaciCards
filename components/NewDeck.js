@@ -6,7 +6,7 @@ import { bordeaux, white } from '../utils/colors';
 export default class NewDeck extends Component {
 
   createDeck = () => {
-    //Route To Deck
+    this.props.navigation.navigate('Deck', {deckInfo: {deckName: "udaciCardsss", cardCount: 4}})
   };
 
   render() {
