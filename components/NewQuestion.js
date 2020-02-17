@@ -11,7 +11,7 @@ export default class NewQuestion extends Component {
   };
 
   submit = () => {
-    //Route to
+    this.props.navigation.navigate('Deck')
   }
 
   render() {
