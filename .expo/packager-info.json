@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 4984,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 22132,
+  "expoServerNgrokUrl": "https://jj-8m2.anonymous.udacicards.exp.direct",
+  "packagerNgrokUrl": "https://packager.jj-8m2.anonymous.udacicards.exp.direct",
+  "ngrokPid": 14196
 }
