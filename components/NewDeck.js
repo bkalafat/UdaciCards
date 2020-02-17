@@ -6,13 +6,13 @@ import { bordeaux, white } from '../utils/colors';
 export default class NewDeck extends Component {
 
   createDeck = () => {
-    //Route To Deck
+    this.props.navigation.navigate('Deck', {deckInfo: {deckName: "udaciCardsss", cardCount: 4}})
   };
 
   render() {
     return (
       <View style={styles.container} >
-        <Text style={styles.text}>What is the title of your new Deck?</Text>
+        <Text style={styles.text}>What is the title of new Deck?</Text>
         <TextInput
           style={styles.textInput}
           placeholder={"Deck Title"}
@@ -28,7 +28,8 @@ export default class NewDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    alignItems: 'center'
+    alignItems: 'center',
+    flex:1
   },
   text: {
     fontSize: 39,

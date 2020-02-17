@@ -1,10 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import DeckList from './components/DeckList'
-import NewDeck from './components/NewDeck'
-import DeckView from './components/DeckView'
+
 import Constants from 'expo-constants'
-import { purple } from './utils/colors';
+import Quiz from './components/Quiz'
+import { purple, bordeaux } from './utils/colors';
+import Navigator from './components/Navigator'
+
+import { Ionicons } from '@expo/vector-icons';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -14,11 +19,14 @@ function UdaciStatusBar({ backgroundColor, ...props }) {
   )
 }
 
+const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
+
     <View style={{ flex: 1 }} >
       <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
-      <DeckView deckName="udacicards" cardCount="3" />
+      <Navigator />
     </View>
   );
 }
