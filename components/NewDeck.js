@@ -8,30 +8,21 @@ import { generateUniqueId } from '../utils/helpers';
 
 
 export default class NewDeck extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
-      text: "",
-      id: ""
+      text: ""
     }
   }
 
-
   createDeck = () => {
-    let id = ""
-    if (this.state.id == "") {
-      id = generateUniqueId()
-      this.setState({
-        id: id
-      })
-    }
-
-    if (id != "") {
-      const title = this.state.text
-      saveDeckTitle({ id, title });
-      this.props.navigation.navigate('Deck', { deckInfo: { deckName: title, cardCount: 4 } })
-    }
+    const id = generateUniqueId()
+    const title = this.state.text
+    saveDeckTitle({ id, title });
+    this.setState({
+      text: ""
+    })
+    this.props.navigation.navigate('Deck', { deckInfo: { deckName: title, cardCount: 4 } })
   };
 
   render() {

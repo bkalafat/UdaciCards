@@ -5,23 +5,27 @@ import { getDecks, setDummy } from '../utils/api';
 export default class DeckList extends Component {
 
   state = {
-    decks:""
+    decks: ""
   }
 
-  componentDidMount() {
+  getDecksAsync() {
     getDecks().then(decks => {
-        this.setState(() => ({
-          decks: decks
-        }))
-      })
+      this.setState(() => ({
+        decks: decks
+      }));
+    });
   }
 
   render() {
-    return (
-      <View style={styles.container} >
-        <Text> {JSON.stringify(this.state.decks)} </Text>
-      </View>
-    )
+
+    this.getDecksAsync()
+
+    const decks = this.state.decks;
+    return Object.keys(decks).map((id) => {
+      return (
+        <View><Text>{JSON.stringify(decks[id].title)}</Text></View>
+      )
+    })
   }
 }
 
