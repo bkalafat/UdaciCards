@@ -13,27 +13,25 @@ export default class NewDeck extends Component {
     super(props)
     this.state = {
       text: "",
-      id: 0
+      id: ""
     }
   }
 
 
   createDeck = () => {
-
-
-    if (this.state.id == 0) {
-
+    let id = ""
+    if (this.state.id == "") {
+      id = generateUniqueId()
       this.setState({
-        id: generateUniqueId()
+        id: id
       })
     }
 
-    const title = this.state.text
-    const id = this.state.id
-
-    saveDeckTitle({ id, title });
-
-    this.props.navigation.navigate('Deck', { deckInfo: { deckName: title, cardCount: 4 } })
+    if (id != "") {
+      const title = this.state.text
+      saveDeckTitle({ id, title });
+      this.props.navigation.navigate('Deck', { deckInfo: { deckName: title, cardCount: 4 } })
+    }
   };
 
   render() {
@@ -44,7 +42,7 @@ export default class NewDeck extends Component {
         <TextInput
           style={styles.textInput}
           placeholder={"Deck Title"}
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({ text })}
           value={this.state.text}
         />
         <TextButton style={styles.button} onPress={this.createDeck}>
