@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
-import { saveDeckTitle } from '../utils/api';
+import { saveDeckTitle, submitDeck } from '../utils/api';
 import { generateUniqueId } from '../utils/helpers';
 
 
@@ -16,13 +16,19 @@ export default class NewDeck extends Component {
   }
 
   createDeck = () => {
-    const id = generateUniqueId()
+    const key = generateUniqueId()
     const title = this.state.text
-    saveDeckTitle({ id, title });
+
+    const deck = {
+      title,
+      cards: []
+    }
+
+    submitDeck({ key, deck });
     this.setState({
       text: ""
     })
-    this.props.navigation.navigate('Deck', { deckInfo: { deckName: title, cardCount: 4 } })
+    this.props.navigation.navigate('Deck', { deck, key })
   };
 
   render() {

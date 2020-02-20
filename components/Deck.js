@@ -1,31 +1,45 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert, Button } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
-
+import { HeaderBackButton } from 'react-navigation-stack'
 export default class Deck extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      deckName: this.props.route.params.deckInfo.deckName,
-      cardCount: this.props.route.params.deckInfo.cardCount
+      deck: this.props.route.params.deck,
+      key: this.props.route.params.key
     }
+
+    this.props.navigation.setOptions({
+      headerLeft: () => (
+        <HeaderBackButton onPress={this.goBack}  />
+      ),
+    })
   }
 
+
   addCard = () => {
-    this.props.navigation.navigate('New Question')
+    this.props.navigation.navigate("New Question", { deck: this.state.deck, key: this.state.key })
   };
   startQuiz = () => {
-    this.props.navigation.navigate('Quiz', { deckInfo: { deckName: this.state.deckName, cardCount: this.state.cardCount }})
+    if (this.state.deck.cards.length > 0)
+      this.props.navigation.navigate("Quiz", { deck: this.state.deck })
+    else
+      alert("Please add card(s) before start quiz!")
   };
+
+  goBack = () =>{
+    this.props.navigation.navigate("UdaciCards")
+  }
 
   render() {
     return (
       <View style={styles.container} >
-        <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{this.state.deckName}</Text>
-        <Text style={[{ fontSize: 31 }, styles.text]}>{this.state.cardCount} cards</Text>
+        <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{this.state.deck.title}</Text>
+        <Text style={[{ fontSize: 31 }, styles.text]}>{this.state.deck.cards.length} cards</Text>
         <View >
           <TextButton style={styles.whiteButton} onPress={this.addCard} >
             Add Card

@@ -4,8 +4,6 @@ import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
 
 let text = "";
-const question = "Does react native work with Android?";
-const answer = "No doesn't work.";
 const answerButton = "Show Answer";
 const questionButton = "Show Question";
 
@@ -16,33 +14,33 @@ export default class Quiz extends Component {
     super(props);
 
     this.state = {
-      deckName: this.props.route.params.deckInfo.deckName,
-      cardCount: this.props.route.params.deckInfo.cardCount,
-      text: question,
-      showButton: answerButton
+      deck: this.props.route.params.deck,
+      showButton: answerButton,
+      text: this.props.route.params.deck.cards[0].question
     }
   }
 
   flipCard = () => {
+    let showButton = ""
     if (this.state.showButton === answerButton) {
-      this.setState({
-        showButton: questionButton,
-        text: answer
-      })
+      text = this.state.deck.cards[0].answer,
+      showButton = questionButton
     }
     else {
-      this.setState({
-        showButton: answerButton,
-        text: question
-      })
+      text = this.state.deck.cards[0].question
+      showButton = answerButton
     }
+    this.setState({
+      showButton,
+      text
+    })
   }
 
   render() {
     return (
 
       <View>
-        <Text style={{ alignSelf: "flex-start", fontSize: 22, padding: 10 }} >3/{this.state.cardCount}</Text>
+        <Text style={{ alignSelf: "flex-start", fontSize: 22, padding: 10 }} >1/{this.state.deck.cards.length}</Text>
         <View style={styles.container} >
           <Text style={[{ fontSize: 36, fontWeight: "bold" }, styles.text]}>{this.state.text}</Text>
           <TextButton style={styles.showButton} onPress={this.flipCard} >
