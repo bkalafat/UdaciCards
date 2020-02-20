@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 6180,
-  "expoServerNgrokUrl": "https://qb-ahr.anonymous.udacicards.exp.direct",
-  "packagerNgrokUrl": "https://packager.qb-ahr.anonymous.udacicards.exp.direct",
-  "ngrokPid": 12108
+  "packagerPid": 8068,
+  "expoServerNgrokUrl": "https://uz-xpt.anonymous.udacicards.exp.direct",
+  "packagerNgrokUrl": "https://packager.uz-xpt.anonymous.udacicards.exp.direct",
+  "ngrokPid": 7140,
+  "devToolsPort": 19002
 }

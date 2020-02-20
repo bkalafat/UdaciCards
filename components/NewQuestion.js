@@ -1,27 +1,44 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text,TextInput, CheckBox } from 'react-native'
+import { StyleSheet, View, Text, TextInput, CheckBox } from 'react-native'
 import { bordeaux, white } from '../utils/colors';
 import TextButton from './TextButton'
+import { submitDeck } from '../utils/api';
 
 
 export default class NewQuestion extends Component {
 
-  state = {
-    checked: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      deck: this.props.route.params.deck,
+      answer: "",
+      question: "",
+      checked: false
+    }
+  }
 
   submit = () => {
-    //Route to
+    const deck = this.state.deck;
+    const key = this.props.route.params.key;
+    const card = { question: this.state.question, answer: this.state.answer, isCorrect: this.state.checked }
+    deck.cards.push(card)
+    submitDeck({ key, deck });
+    this.props.navigation.navigate('Deck', {deck, key})
   }
 
   render() {
     return (
       <View style={styles.container} >
         <TextInput
+          onChangeText={(question) => this.setState({ question })}
+          value={this.state.question}
           style={styles.textInput}
           placeholder={"Question"}
         />
         <TextInput
+          onChangeText={(answer) => this.setState({ answer })}
+          value={this.state.answer}
           style={styles.textInput}
           placeholder={"Answer"}
         />
@@ -61,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 50,
     backgroundColor:
-    bordeaux,
+      bordeaux,
 
     color: white,
     borderRadius: 8

@@ -6,7 +6,6 @@ import DeckList from './DeckList'
 import NewDeck from './NewDeck'
 
 const Tab = createBottomTabNavigator();
-
 export default class TabNavigator extends Component {
 
   render() {
@@ -24,7 +23,6 @@ export default class TabNavigator extends Component {
               iconName = focused ? 'md-add-circle' : 'md-add-circle';
             }
 
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
