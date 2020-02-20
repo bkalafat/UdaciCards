@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
-import { saveDeckTitle, submitDeck } from '../utils/api';
+import {  submitDeck } from '../utils/api';
 import { generateUniqueId } from '../utils/helpers';
 
 
@@ -35,16 +35,19 @@ export default class NewDeck extends Component {
     return (
       <View style={styles.container} >
 
-        <Text style={styles.text}>What is the title of new Deck?</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder={"Deck Title"}
-          onChangeText={(text) => this.setState({ text })}
-          value={this.state.text}
-        />
+        <View style={{paddingTop:30}}>
+          <TextInput
+            style={styles.textInput}
+            placeholder={"Deck Title"}
+            onChangeText={(text) => this.setState({ text })}
+            value={this.state.text}
+          />
+        </View>
         <TextButton style={styles.button} onPress={this.createDeck}>
           Create Deck
         </TextButton>
+        <Text style={styles.text}>What is the title of new Deck?</Text>
+
       </View>
     )
   }
@@ -58,8 +61,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 39,
-    padding: 50,
-    paddingTop: 200,
+    justifyContent: "flex-start",
     textAlign: 'center',
     color: '#464646'
   },

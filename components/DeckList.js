@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import { getDecks, clearSetDummy } from '../utils/api';
+import { getDecks } from '../utils/api';
 
 export default class DeckList extends Component {
 

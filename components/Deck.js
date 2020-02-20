@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, Alert, Button } from 'react-native'
 import TextButton from "./TextButton";
 import { bordeaux, white } from '../utils/colors';
-import { HeaderBackButton } from 'react-navigation-stack'
 export default class Deck extends Component {
 
   constructor(props) {
@@ -12,10 +11,7 @@ export default class Deck extends Component {
       deck: this.props.route.params.deck,
       key: this.props.route.params.key
     }
-
-
   }
-
 
   addCard = () => {
     this.props.navigation.navigate("New Question", { deck: this.state.deck, key: this.state.key })
