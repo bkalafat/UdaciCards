@@ -18,13 +18,18 @@ export default class Quiz extends Component {
       showButton: answerButton,
       text: this.props.route.params.deck.cards[0].question
     }
+
+  }
+
+  goBack = () => {
+    this.props.navigation.navigate("Deck")
   }
 
   flipCard = () => {
     let showButton = ""
     if (this.state.showButton === answerButton) {
       text = this.state.deck.cards[0].answer,
-      showButton = questionButton
+        showButton = questionButton
     }
     else {
       text = this.state.deck.cards[0].question

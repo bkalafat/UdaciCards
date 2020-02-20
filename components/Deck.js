@@ -13,11 +13,7 @@ export default class Deck extends Component {
       key: this.props.route.params.key
     }
 
-    this.props.navigation.setOptions({
-      headerLeft: () => (
-        <HeaderBackButton onPress={this.goBack}  />
-      ),
-    })
+
   }
 
 
@@ -30,10 +26,6 @@ export default class Deck extends Component {
     else
       alert("Please add card(s) before start quiz!")
   };
-
-  goBack = () =>{
-    this.props.navigation.navigate("UdaciCards")
-  }
 
   render() {
     return (

@@ -24,8 +24,9 @@ export default class NewQuestion extends Component {
 
     const card = { question: this.state.question, answer: this.state.answer, isCorrect: this.state.checked }
     deck.cards.push(card)
+
     submitDeck({ key, deck });
-    this.props.navigation.navigate('Deck')
+    this.props.navigation.navigate('Deck', {deck, key})
   }
 
   render() {
